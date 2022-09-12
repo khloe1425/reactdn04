@@ -31,15 +31,30 @@ export default class DemoState extends Component {
             // để đổi đc giá trị và render lại UI khi giá trị thay đổi  => State
 
             // xét giá trị mới cho isLogin (state) và render lại UI
-            this.setState({
+            
+            let newState = {
                 isLogin:true
-            });
+            }
+            this.setState(newState, () => { 
+                //tham số thứ 2 của setState giúp xử lý các nghiệp vụ sau khi state đã được đổi
+                console.log("setState", this.state.isLogin);
+             });
 
+             //Nếu đặt console bên dưới setState sẽ bị sai kết quả thông báo do bất đồng bộ dữ liệu
+             console.log("setState", this.state.isLogin);
+             
+            // this.setState({
+            //     isLogin:true
+            // }, () => { 
+            //     console.log(this.state.isLogin)
+            //  });
 
+            //  this.setState(gia tri moi cua state,ham callback )
          }} className='btn btn-success'>Login</button>
     }
 
     render() {
+        console.log("render",this.state.isLogin)
         return (
             <div className='container'>
                 <nav className="navbar navbar-dark bg-dark">
