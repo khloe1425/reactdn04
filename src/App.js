@@ -10,6 +10,9 @@ import TangGiamFont from './DemoState/TangGiamFont';
 import DemoStyling from './DemoState/DemoStyling';
 import DoiMauXe from './DemoState/DoiMauXe/DoiMauXe';
 import DemoArray from './DemoArray/DemoArray';
+import DemoProps from './DemoProps/DemoProps';
+import ShoesShop from './DemoProps/ShoesShop/ShoesShop';
+import BTXemChiTiet from './BTXemChiTiet/BTXemChiTiet';
 
 //App là component chính của ứng dụng
 //chứa các thành phần component con
@@ -19,7 +22,13 @@ function App() {
     //thẻ jsx
     <div className="App">
 
-      <DemoArray/>
+    <BTXemChiTiet/>
+
+      {/* <ShoesShop/> */}
+
+      {/* <DemoProps/> */}
+
+      {/* <DemoArray/> */}
       {/* <DoiMauXe/> */}
       
       {/* <p className='demoCSS'>demoCSS ở App</p> */}
