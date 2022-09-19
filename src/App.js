@@ -13,6 +13,7 @@ import DemoArray from './DemoArray/DemoArray';
 import DemoProps from './DemoProps/DemoProps';
 import ShoesShop from './DemoProps/ShoesShop/ShoesShop';
 import BTXemChiTiet from './BTXemChiTiet/BTXemChiTiet';
+import BTGioHang from './BTGioHang/BTGioHang';
 
 //App là component chính của ứng dụng
 //chứa các thành phần component con
@@ -22,29 +23,8 @@ function App() {
     //thẻ jsx
     <div className="App">
 
-    <BTXemChiTiet/>
-
-      {/* <ShoesShop/> */}
-
-      {/* <DemoProps/> */}
-
-      {/* <DemoArray/> */}
-      {/* <DoiMauXe/> */}
-      
-      {/* <p className='demoCSS'>demoCSS ở App</p> */}
-      {/* <DemoStyling /> */}
-      {/* <TangGiamFont/> */}
-
-      {/* <DemoState/> */}
-      {/* <HandleEvent/> */}
-
-      {/* <DataBinding/> */}
-
-      {/* <HomeComponent/> */}
-      {/* component */}
-      {/* <CardRCC></CardRCC>
-        <CardRCC/>
-        <CardRFC/> */}
+    <BTGioHang/>
+   
     </div>
   );
 }
