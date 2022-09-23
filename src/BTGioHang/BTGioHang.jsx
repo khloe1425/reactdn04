@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import DanhSachSP from './DanhSachSP'
+import GioHang from './GioHang'
 
 export default class BTGioHang extends Component {
 
@@ -14,53 +16,7 @@ export default class BTGioHang extends Component {
         gioHang: []
     }
 
-    renderCart = () => {
-        return this.state.gioHang.map((spGH) => {
-            return <tr key={`cart-${spGH.maSP}`}>
-                <td>{spGH.maSP}</td>
-                <td>
-                    <img style={{ width: "40px" }} src={spGH.hinhAnh} alt="" />
-                </td>
-                <td>
-                    {spGH.tenSP}
-                </td>
-                <td>
-                    <button onClick={() => { 
-                        this.changeSL(spGH.maSP, 1)
-                     }} className='btn btn-success'>+</button>
-                    <span>{spGH.soLuong}</span>
-                    <button onClick={() => { 
-                        this.changeSL(spGH.maSP, -1)
-                     }} className='btn btn-danger'>-</button>
-                </td>
-                <td>{spGH.giaBan.toLocaleString()}</td>
-                <td>{(spGH.soLuong * spGH.giaBan).toLocaleString()}</td>
-                <td>
-                    <button onClick={() => { 
-                        this.removeCart(spGH.maSP);
-                     }} className='btn btn-danger'>Xóa</button>
-                </td>
-            </tr>
-        })
-    }
 
-    renderProList = () => {
-        return this.phoneList.map((phone) => {
-            return <div className="col-4" key={phone.maSP}>
-                <div className="card">
-                    <img className="card-img-top" src={phone.hinhAnh} alt="" />
-                    <div className="card-body">
-                        <h4 className="card-title">{phone.tenSP}</h4>
-                        <p className="card-text">{phone.giaBan}</p>
-                        <button onClick={() => {
-                            this.addToCart(phone);
-                        }}
-                            data-toggle="modal" data-target="#modelId" className='btn btn-danger'>Thêm giỏ hàng</button>
-                    </div>
-                </div>
-            </div>
-        })
-    }
     // input: thông tin sp đang được click
     // output: san pham được thêm vào mảng gioHang
     addToCart = (spClick) => {
@@ -146,6 +102,20 @@ export default class BTGioHang extends Component {
 
     }
 
+    tinhTongSL = () =>{
+        //? reduce ((kết quả, từng phần tử, vị trí phần tử)=>{}, giá trị khởi tạo của kết quả ): duyệt mảng, dựa vào công thức tính toàn 
+        //return 1 kết quả tính toàn
+        // return this.state.gioHang.reduce((tongSL,sanPham,index) => tongSL += sanPham.soLuong, 0);
+        
+        let tong = this.state.gioHang.reduce((tongSL,sanPham,index) => { 
+                //công thức tính toán
+                // tongSL(mới) = tongSL(cũ) + sanPham.soLuong
+                return tongSL += sanPham.soLuong;
+         }, 0);
+
+         return tong.toLocaleString();
+    }
+
 
     render() {
         return (
@@ -172,44 +142,12 @@ export default class BTGioHang extends Component {
                             </li>
                         </ul>
                         <div className="form-inline my-2 my-lg-0">
-                            <p className='text-white'>Giỏ hàng (0)</p>
+                            <p className='text-white'>Giỏ hàng ({this.tinhTongSL()})</p>
                         </div>
                     </div>
                 </nav>
-                <div className="row py-5">
-                    {this.renderProList()}
-                </div>
-                <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                    <div className="modal-dialog modal-lg" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Modal title</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Mã</th>
-                                            <th>Hình ảnh</th>
-                                            <th>Tên</th>
-                                            <th>Số lượng</th>
-                                            <th>Đơn giá</th>
-                                            <th>Thành tiền</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.renderCart()}
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+               <DanhSachSP addToCart={this.addToCart}  phoneList={this.phoneList}/>
+                <GioHang removeCart={this.removeCart} changeSL={this.changeSL} gioHang={this.state.gioHang} />
 
 
             </div>

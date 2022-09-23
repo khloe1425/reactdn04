@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
-export default class GioHang extends Component {
+import { connect } from 'react-redux'
+
+class GioHangRedux extends Component {
+
   renderCart = () => {
     return this.props.gioHang.map((spGH) => {
         return <tr key={`cart-${spGH.maSP}`}>
@@ -13,25 +16,27 @@ export default class GioHang extends Component {
             </td>
             <td>
                 <button onClick={() => { 
-                    this.props.changeSL(spGH.maSP, 1)
+                    
                  }} className='btn btn-success'>+</button>
                 <span>{spGH.soLuong}</span>
                 <button onClick={() => { 
-                    this.props.changeSL(spGH.maSP, -1)
+                   
                  }} className='btn btn-danger'>-</button>
             </td>
             <td>{spGH.giaBan.toLocaleString()}</td>
             <td>{(spGH.soLuong * spGH.giaBan).toLocaleString()}</td>
             <td>
                 <button onClick={() => { 
-                    this.props.removeCart(spGH.maSP);
+                   
                  }} className='btn btn-danger'>Xóa</button>
             </td>
         </tr>
     })
 }
+
+
   render() {
-    console.log(this.props);
+    console.log(this.props)
     return (
       <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div className="modal-dialog modal-lg" role="document">
@@ -67,3 +72,17 @@ export default class GioHang extends Component {
     )
   }
 }
+//Tạo hàm lấy giá trị state(reducer) từ store của redux
+//mapStateToProps => đem state từ redux lưu xuống props của component
+const mapStateToProps = (rootReducer) => {
+
+  //lưu vào props của component
+  return {
+      gioHang: rootReducer.gioHangReducer
+  }
+}
+
+//connect tạo ra 1 loại component mới bao gồm tính năng của Class component react + Redux
+const ComponentGioHangRedux = connect(mapStateToProps)(GioHangRedux);
+
+export default ComponentGioHangRedux;
