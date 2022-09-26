@@ -15,6 +15,7 @@ import ShoesShop from './DemoProps/ShoesShop/ShoesShop';
 import BTXemChiTiet from './BTXemChiTiet/BTXemChiTiet';
 import BTGioHang from './BTGioHang/BTGioHang';
 import BTGioHangRedux from './BTGioHangRedux/BTGioHangRedux';
+import GameTaiXiu from './GameTaiXiu/GameTaiXiu';
 
 //App là component chính của ứng dụng
 //chứa các thành phần component con
@@ -24,7 +25,9 @@ function App() {
     //thẻ jsx
     <div className="App">
 
-    <BTGioHangRedux/>
+      <GameTaiXiu/>
+
+    {/* <BTGioHangRedux/> */}
 
     {/* <BTGioHang/> */}
    
