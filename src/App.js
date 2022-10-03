@@ -16,7 +16,8 @@ import BTXemChiTiet from './BTXemChiTiet/BTXemChiTiet';
 import BTGioHang from './BTGioHang/BTGioHang';
 import BTGioHangRedux from './BTGioHangRedux/BTGioHangRedux';
 import GameTaiXiu from './GameTaiXiu/GameTaiXiu';
-import BTQLND from './BTQLND/BTQLND';
+import BTQLNDRedux from './BTQLNDRedux/BTQLNDRedux';
+// import BTQLND from './BTQLND/BTQLND';
 
 //App là component chính của ứng dụng
 //chứa các thành phần component con
@@ -26,13 +27,15 @@ function App() {
     //thẻ jsx
     <div className="App">
 
- <BTQLND/>
+        <BTQLNDRedux/>
+
+      {/* <BTQLND/> */}
       {/* <GameTaiXiu/> */}
 
-    {/* <BTGioHangRedux/> */}
+      {/* <BTGioHangRedux/> */}
 
-    {/* <BTGioHang/> */}
-   
+      {/* <BTGioHang/> */}
+
     </div>
   );
 }
