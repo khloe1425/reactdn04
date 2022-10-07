@@ -17,7 +17,8 @@ import BTGioHang from './BTGioHang/BTGioHang';
 import BTGioHangRedux from './BTGioHangRedux/BTGioHangRedux';
 import GameTaiXiu from './GameTaiXiu/GameTaiXiu';
 import BTQLNDRedux from './BTQLNDRedux/BTQLNDRedux';
-// import BTQLND from './BTQLND/BTQLND';
+import BTQLND from './BTQLND/BTQLND';
+import LifeCycleParent from './LifeCycle/LifeCycleParent';
 
 //App là component chính của ứng dụng
 //chứa các thành phần component con
@@ -27,9 +28,13 @@ function App() {
     //thẻ jsx
     <div className="App">
 
-        <BTQLNDRedux/>
+      {/* <LifeCycleParent/> */}
 
-      {/* <BTQLND/> */}
+      <BTQLND />
+
+      {/* <BTQLNDRedux/> */}
+
+
       {/* <GameTaiXiu/> */}
 
       {/* <BTGioHangRedux/> */}

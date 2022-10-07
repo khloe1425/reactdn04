@@ -156,7 +156,14 @@ class FormDangKy extends Component {
             <div className="col-12 text-center">
 
               <button className='btn btn-success'>Đăng ký</button>
-              <button className='btn btn-info'>Cập Nhật</button>
+              <button type='button' className='btn btn-info' onClick={() => { 
+                  let action ={
+                    type:"CAP_NHAT",
+                    nguoiDungCapNhat: this.props.nguoiDung.values
+                  }
+
+                  this.props.dispatch(action);
+               }} >Cập Nhật</button>
 
             </div>
           </div>
